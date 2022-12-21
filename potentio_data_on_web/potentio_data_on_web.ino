@@ -2,8 +2,8 @@
 #include <WebServer.h>
 
 // Replace with your network credentials
-const char* ssid ="realme 3 Pro"; //Enter Wi-Fi SSID
-const char* password ="1967bcea48bakg"; //Enter Wi-Fi Password
+const char* ssid = "JCBRO"; //Enter Wi-Fi SSID
+const char* password =  "jcbro@321"; //Enter Wi-Fi Password
 
 WebServer server(80);   //instantiate server at port 80 (http port)
 
@@ -11,16 +11,16 @@ String page = "";
 String text = "";
 double data;
 
-int potPin = 14;
-int potValue = 0;
+int potPin = 34;
+int potValue =0;
 
 float voltage;
 
 void setup(void) {
   pinMode(potPin, INPUT);
-  Serial.begin(115200);
-   delay(500);
-  WiFi.begin(ssid,password); //begin WiFi connection
+  Serial.begin(9600);
+   delay(1000);
+  WiFi.begin(ssid, password); //begin WiFi connection
   Serial.println("");
 
   // Wait for connection
@@ -37,9 +37,9 @@ void setup(void) {
   server.on("/data.txt", []() {
     text = (String)data;
     server.send(200, "text/html", text);
-  }); 
+  });
   server.on("/", []() {
-    page = "<h1>Potentiometer Data</h1><h1>Potentio value (Between 0-5V):<span id=\"data\">""</h1>\r\n";
+    page = "<h1>Potentiometer Data</h1><h1>Potentio value in volt:</h1> <h1 id=\"data\">""</h1>\r\n";
     page += "<script>\r\n";
     page += "var x = setInterval(function() {loadData(\"data.txt\",updateData)}, 1000);\r\n";
     page += "function loadData(url, callback){\r\n";
@@ -64,13 +64,14 @@ void setup(void) {
 }
 
 void loop(void) {
-  // read the input on analog pin 14:
+  // read the input on analog pin 34:
   potValue = analogRead(potPin);
    // Convert the analog reading (which goes from 0 - 4095) to a voltage (0 - 5V):
   voltage = potValue*(5.0/4095.0);
   data= voltage;
   Serial.print("voltage :");
-  Serial.println(voltage);  
-  delay(500);
+  Serial.println(voltage);
+  
+  delay(1000);
   server.handleClient();
 }
