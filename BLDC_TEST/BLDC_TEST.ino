@@ -1,3 +1,5 @@
+// by this code you can send pwm value (command) through serial monitor and control the bldc motor
+
 #include <Servo.h>
 
 Servo ESC;     // create servo object to control the ESC
