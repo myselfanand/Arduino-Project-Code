@@ -23,7 +23,7 @@ void loop()
    }   
   ESC.write(potValue);    // Send the signal to the ESC
   delay(2000);
-  s
+  
 //  Serial.println(potValue);
 //  potValue += 2;
   
