@@ -1,12 +1,12 @@
 //WELCOME TO JCBRO LABS 
 //PLEASE SUBSCRIBE TO OUR YOUTUBE CHANNEL IF YOU R INTERESTED IN EMBEDDED SYSTEM
-//OUR YOUTUBE CHANNEL NAME IS EMBEDDED GARAGE 
+//OUR YOUTUBE CHANNEL NAME IS EMBEDDED GARAGE
 //SO PLEASE VISIT ONCE TO OUR CHANNEL
 //LETS START TO THE PROJECT
 
 #define in 14    //for enter
 #define out 19  //for exit 
-#define led 2   //your output pin(like bulb,fan...etc)
+#define led 2   //your output (like bulb,fan...etc)
 
 int count=0;
 
@@ -48,7 +48,7 @@ void loop()
   if(count<=0)
   {
     digitalWrite(led, LOW);
-    Serial.println("Nobody In Room,Lights Off");
+    Serial.println("Nobody In Room So,Light Is Off");
     Serial.print("");
     delay(500);
   }  

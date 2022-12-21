@@ -1,50 +1,52 @@
-#include<BluetoothSerial.h>
+#include "BluetoothSerial.h"
 BluetoothSerial SerialBT;
 
-int received;
-char receivedChar;
+int received;// received value will be stored in this variable
+char receivedChar;// received value will be stored as CHAR in this variable
 
-const char turnON = 'a';
-const char turnOFF = 'b';
+const char turnON ='a';
+const char turnOFF ='b';
+const int LEDpin = 2;
 
-const int LEDpin = 14;
-
-void setup()
-{
-  Serial.begin(115200);
-  SerialBT.begin("ESP32");
-  Serial.println("the device is started, now you can pair with bluettooth");
-  Serial.println("to turn On send a");
-  Serial.println("to turn OFF send b");
-
+void setup() {
+  Serial.begin(9600);
+  SerialBT.begin("ESP32"); //Bluetooth device name
+  Serial.println("The device started, now you can pair it with bluetooth!");
+  Serial.println("To turn ON send: a");//print on serial monitor  
+  Serial.println("To turn OFF send: b"); //print on serial monitor 
   pinMode(LEDpin, OUTPUT);
-  
+ 
 }
 
-void loop()
-{
-  receivedChar = (char)SerialBT.read();
+void loop() {
+  receivedChar =(char)SerialBT.read();
 
-  if(Serial.available()){
+  if (Serial.available()) {
     SerialBT.write(Serial.read());
+  
   }
-  if(SerialBT.available()){
-    SerialBT.print("Received");
-    SerialBT.print(receivedChar);
-    Serial.print("Received");
-    Serial.println(receivedChar);
+  if (SerialBT.available()) {
+    
+    SerialBT.print("Received:");// write on BT app
+    SerialBT.println(receivedChar);// write on BT app      
+    Serial.print ("Received:");//print on serial monitor
+    Serial.println(receivedChar);//print on serial monitor    
+    //SerialBT.println(receivedChar);//print on the app    
+    //SerialBT.write(receivedChar); //print on serial monitor
+    if(receivedChar == turnON)
+    {
+     SerialBT.println("LED ON:");// write on BT app
+     Serial.println("LED ON:");//write on serial monitor
+     digitalWrite(LEDpin, HIGH);// turn the LED ON
+}
+}
+    if(receivedChar == turnOFF)
+    {
+     SerialBT.println("LED OFF:");// write on BT app
+     Serial.println("LED OFF:");//write on serial monitor
+      digitalWrite(LEDpin, LOW);// turn the LED off 
+    }    
+     
+  
 
-    if(receivedChar ==turnON)
-    {
-      SerialBT.print("LED ON");
-      Serial.println("LED ON");
-      digitalWrite(LEDpin, HIGH);
-    }
-  }
- if(receivedChar ==turnOFF)
-    {
-      SerialBT.print("LED OFF");
-      Serial.println("LED OFF");
-      digitalWrite(LEDpin, LOW);
-    }
 }

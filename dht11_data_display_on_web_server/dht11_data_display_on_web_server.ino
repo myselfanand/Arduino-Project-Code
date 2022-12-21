@@ -14,7 +14,7 @@ const char* password = "jcbro@321";  //Enter Password here
 WebServer server(80);
 
 // DHT Sensor
-const int DHTPin = 14; 
+const int DHTPin = 4; 
                
 // Initialize DHT sensor.
 DHT dht(DHTPin, DHTTYPE);                
@@ -24,7 +24,7 @@ float Humidity;
 
  
 void setup() {
-  Serial.begin(115200);
+  Serial.begin(9600);
   delay(1000);
   
   pinMode(DHTPin, INPUT);

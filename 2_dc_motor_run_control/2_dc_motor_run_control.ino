@@ -1,9 +1,11 @@
 
-int motor1Pin1= 25;
-int motor1Pin2= 26;
+int motor1Pin1= 32;
+int motor1Pin2= 33;
 
 int motor2Pin1= 18;
 int motor2Pin2= 19;
+
+
 
 
 void setup() {
@@ -23,15 +25,13 @@ void loop() {
 Serial.println("MOVING FORWARD");
 digitalWrite(motor1Pin1,HIGH);
 digitalWrite(motor1Pin2,LOW);
-
 digitalWrite(motor2Pin1,HIGH);
 digitalWrite(motor2Pin2,LOW);
-delay(5000);
+delay(2000);
 
 Serial.println("MOVING BACKWARD");
 digitalWrite(motor1Pin1,LOW);
 digitalWrite(motor1Pin2,HIGH);
-
 digitalWrite(motor2Pin1,LOW);
 digitalWrite(motor2Pin2,HIGH);
 delay(2000);
