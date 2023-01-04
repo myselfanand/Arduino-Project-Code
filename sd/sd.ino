@@ -30,9 +30,9 @@ void setup(){
 //    uint64_t cardSize = SD.cardSize() / (1024 * 1024);
 //    Serial.printf("SD Card Size: %lluMB\n", cardSize);
 
-//    writeFile(SD, "/biii_tech.txt", "Welcome to ");
-//    appendFile(SD, "/biii_tech.txt", "BiiiTech!\n");
-     readFile(SD, "/biii_tech.txt");
+//    writeFile(SD, "/Anand.txt", "Welcome to ");
+//    appendFile(SD, "/Anand.txt"", "our  repository!\n");
+     readFile(SD, "/Anand.txt"");
 }
 
 void loop(){
