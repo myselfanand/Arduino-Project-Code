@@ -32,7 +32,7 @@ void setup(){
 
    writeFile(SD, "/Anand.txt", "Welcome to ");
    appendFile(SD, "/Anand.txt"", "our  repository!\n");
-     readFile(SD, "/Anand.txt"");
+   //readFile(SD, "/Anand.txt"");
 }
 
 void loop(){
